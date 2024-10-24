@@ -1,0 +1,18 @@
+services:
+  backend:
+    build: ./toko-atk-backend
+    ports:
+      - "3000:3000"
+  frontend:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./toko-atk-frontend/dist:/usr/share/nginx/html
+  mysql:
+    image: mysql:latest
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: your_mysql_password
+      MYSQL_DATABASE: toko_atk
